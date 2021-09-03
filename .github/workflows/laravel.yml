@@ -12,7 +12,7 @@ jobs:
         env:
           POSTGRE_USER: test
           POSTGRES_PASSWORD: test
-          POSTGRES_DB: test
+          POSTGRES_DB: laravel
           POSTGRES_PORT: 5432
         options: >-
           --health-cmd pg_isready
@@ -38,10 +38,10 @@ jobs:
     - name: Test database
       run: php artisan migrate
       env:
-        DB_HOST: localhost
+        DB_HOST: 127.0.0.1
         DB_USER: test
         DB_PASSWORD: test
-        DB_NAME: test
+        DB_NAME: laravel
         DB_PORT: 5432
     - name: Execute tests
       run: php artisan test
