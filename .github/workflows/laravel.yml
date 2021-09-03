@@ -9,9 +9,7 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: laravel
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -33,12 +31,9 @@ jobs:
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Run migrate database
-      run: php artisan migrate
+      run: php artisan db
       env:
-        POSTGRES_HOST: postgres
+        POSTGRES_HOST: localhost
         POSTGRES_PORT: 5432
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: postgres
-        POSTGRES_DB: laravel
     - name: Execute tests
       run: php artisan test
