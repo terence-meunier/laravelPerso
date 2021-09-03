@@ -34,5 +34,8 @@ jobs:
       working-directory: ./postgres
       run: php artisan migrate
       env:
+        POSTGRE_USER: test
+        POSTGRE_PASSWORD: test
+        POSTGRE_DB: laravel
         POSTGRES_HOST: localhost
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
