@@ -33,7 +33,7 @@ jobs:
     - name: Run migrate database
       run: php artisan migrate
       env:
-        POSTGRES_HOST: postgres
+        POSTGRES_HOST: localhost
         POSTGRES_USER: root
         POSTGRES_PASSWORD: root
         POSTGRES_PORT: 5432
