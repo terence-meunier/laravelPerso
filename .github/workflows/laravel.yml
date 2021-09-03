@@ -43,5 +43,6 @@ jobs:
         DB_PASSWORD: test
         DB_NAME: laravel
         DB_PORT: 5432
+        DB_DIALECT: postgres
     - name: Execute tests
       run: php artisan test
