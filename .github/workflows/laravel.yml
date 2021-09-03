@@ -39,3 +39,7 @@ jobs:
       run: php artisan migrate -v
       env:
         DB_PORT: ${{ job.services.postgres.ports[5432] }}
+    - name: Run Test
+      run: php artisan test
+      env:
+        DB_PORT: ${{ job.services.postgres.ports[5432] }}
