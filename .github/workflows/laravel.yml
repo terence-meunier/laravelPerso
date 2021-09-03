@@ -40,6 +40,6 @@ jobs:
       env:
         DB_PORT: ${{ job.services.postgres.ports[5432] }}
     - name: Run Test
-      run: php artisan test
+      run: vendor/bin/phpunit --coverage-text
       env:
         DB_PORT: ${{ job.services.postgres.ports[5432] }}
