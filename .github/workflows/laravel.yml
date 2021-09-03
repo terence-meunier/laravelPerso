@@ -40,6 +40,6 @@ jobs:
       env:
         DB_PORT: ${{ job.services.postgres.ports[5432] }}
     - name: Test with prompt
-      run: php artisan config:clear && php artisan test
+      run: php artisan test --testsuite=Feature
       env:
         DB_PORT: ${{ job.services.postgres.ports[5432] }}
