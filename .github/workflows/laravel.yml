@@ -11,7 +11,12 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: laravel
+          POSTGRES_DB: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
         ports:
           - 5432:5432
     steps:
@@ -31,9 +36,8 @@ jobs:
       run: php artisan migrate
       env:
         POSTGRES_HOST: localhost
+        POSTGRES_PORT: 5432
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
-        POSTGRES_DB: laravel
-        POSTGRES_PORT: 5432
     - name: Execute tests
       run: php artisan test
