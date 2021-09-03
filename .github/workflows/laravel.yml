@@ -13,8 +13,7 @@ jobs:
         image: postgres:13
         env:
           POSTGRES_USER: root
-          POSTGRES_PASSWORD: root
-          POSTGRES_PORT: 5432:5432 
+          POSTGRES_PASSWORD: root 
           POSTGRES_DB: laravel
 
     steps:
@@ -33,10 +32,10 @@ jobs:
     - name: Run migrate database
       run: php artisan migrate
       env:
-        POSTGRES_HOST: localhost
+        POSTGRES_HOST: postgres
         POSTGRES_USER: root
         POSTGRES_PASSWORD: root
         POSTGRES_PORT: 5432
         POSTGRES_DB: laravel
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
+    - name: Execute tests
       run: php artisan test
