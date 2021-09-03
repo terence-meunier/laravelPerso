@@ -39,7 +39,7 @@ jobs:
       run: php artisan migrate -v
       env:
         DB_PORT: ${{ job.services.postgres.ports[5432] }}
-    - name: Run Test
-      run: vendor/bin/phpunit --coverage-text
+    - name: Test with prompt
+      run: php artisan congig:clear && php artisan test
       env:
         DB_PORT: ${{ job.services.postgres.ports[5432] }}
