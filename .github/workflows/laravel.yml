@@ -38,10 +38,8 @@ jobs:
     - name: Test database
       run: php artisan migrate
       env:
-        POSTGRES_HOST: 127.0.0.1
         POSTGRES_USER: test
         POSTGRES_PASSWORD: test
         POSTGRES_DB: laravel
-        POSTGRES_PORT: 5432
     - name: Execute tests
       run: php artisan test
