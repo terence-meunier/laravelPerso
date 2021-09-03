@@ -13,14 +13,10 @@ jobs:
           POSTGRE_USER: test
           POSTGRES_PASSWORD: test
           POSTGRES_DB: laravel
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
         ports:
-          - 5432:5432
-
+          - 5432/tcp
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+  
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
@@ -35,12 +31,8 @@ jobs:
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Test database
-      run: php artisan migrate 
+      working-directory: ./postgres
+      run: php artisan migrate
       env:
-        POSTGRES_USER: test
-        POSTGRES_PASSWORD: test
-        POSTGRES_DB: laravel
         POSTGRES_HOST: localhost
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
-    - name: Execute tests
-      run: php artisan test
